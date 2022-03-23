@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Hurricane&family=Inspiration&family=Quicksand:wght@500&family=Roboto:wght@300&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+</head>
+<body>
+    <header>
+        <div class="header">
+            <div class="first_header">
+                <div class="logo">
+                    <a href="/dashboard">
+                        <img src="../static/IMG/logo.svg" alt="Logo Edullka">
+                        <p>CodeCamp</p>
+                    </a>
+                </div>
+                    <div class="profile">
+                        <a href="/profile" class="profile_a">
+                            <i class="fa fa-user icon-profile-1" aria-hidden="true"></i>
+                            <p>
+                                {{ user.first_name }} {{user.last_name}}
+                            </p>
+                        </a>
+                        <a href="/logout">
+                            <i class="fa fa-sign-out icon-logout-1" aria-hidden="true"></i>
+                        </a>
+                    </div>
+            </div>
+            <nav>
+                <div class="new">
+                    <form action="#" class="search">
+                        <input type="search" name="" id="" class="search1"
+                        value="Search for techonology...">
+                    </form>
+                    <a href="/add-new-room" class="newGroup">
+                        <i class="fa fa-plus" aria-hidden="true"></i>
+                        <p>Create a new room</p>
+                    </a>
+                    <a href="" class="buyMe">
+                        <i class="fa fa-coffee" aria-hidden="true"></i>
+                        <p>Buy me a coffee</p>
+                    </a>
+                </div>
+            </nav>
+        </div>
+        
+    </header>
+    <main>
+        <div class="view" id="particles-js">
+            <div class="plane main">
+                
+            </div>
+        </div>
+        <form action="/add-new-room-confirm" method="POST" class="card_login card_room">
+            <p class="card_login_title">Add a New Group</p>
+            <p class="topic_details">Note: You will get banned if you abuse the Topic <a href="#">(click for more detail)</a></p>
+        
+            <div class="form-group">
+                <p>
+                    <label for="name">Topic: </label>
+                </p>
+                <input type="text" name="name" id="name" class="form-control">
+            </div>
+            <div class="options_room">
+                <div class="form-group">
+                    <p>
+                        <label for="technologie_id">Technology: </label>
+                    </p>
+                    <select name="technologie_id" id="technologie_id" class="option_input">
+                        {% for i in technologies %}
+                            <option value="{{ i.id }}">{{ i.tech_name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <p>
+                        <label for="level">Level: </label>
+                    </p>
+                    <select name="level" id="level" class="option_input">
+                            <option value="Any Level">Any Level</option>
+                            <option value="Basic">Basic</option>
+                            <option value="Intermediate">Intermediate</option>
+                            <option value="Advanced">Advanced</option>
+                    </select>
+                </div>
+            </div>
+            <input type="submit" class="btn-primary" value="Create Room">
+        </form>
+    </main>
+
+    <script src="{{ url_for('static', filename='JS/particles.js') }}"></script>
+    <script src="{{ url_for('static', filename='JS/app.js') }}"></script>
+    <script src="{{ url_for('static', filename='JS/stats.js') }}"></script>
+</body>
+</html>

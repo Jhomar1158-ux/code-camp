@@ -20,18 +20,22 @@
         <div class="header">
             <div class="first_header">
                 <div class="logo">
-                    <a href="/">
+                    <a href="/dashboard">
                         <img src="../static/IMG/logo.svg" alt="Logo Edullka">
                         <p>CodeCamp</p>
                     </a>
                 </div>
-                <div class="accesos">
-                        <a href="/login-view" class="signin">
-                            <i class="fa fa-sign-in" aria-hidden="true"></i>
-                            <p>Sign in</p>
+                    <div class="profile">
+                        <a href="/profile" class="profile_a">
+                            <i class="fa fa-user icon-profile-1" aria-hidden="true"></i>
+                            <p>
+                                {{ user.first_name }} {{user.last_name}}
+                            </p>
                         </a>
-                        <a href="/register-view" class="register">Register</a>
-                </div>
+                        <a href="/logout">
+                            <i class="fa fa-sign-out icon-logout-1" aria-hidden="true"></i>
+                        </a>
+                    </div>
             </div>
             <nav>
                 <div class="new">
@@ -39,7 +43,7 @@
                         <input type="search" name="" id="" class="search1"
                         value="Search for techonology...">
                     </form>
-                    <a href="/login-view" class="newGroup">
+                    <a href="/add-new-room" class="newGroup">
                         <i class="fa fa-plus" aria-hidden="true"></i>
                         <p>Create a new room</p>
                     </a>
@@ -62,7 +66,7 @@
                         </div>
                         <div class="cardContent_1">
                             <p class="cardContent_title">{{ i.name }}</p>
-                            <p class="cardContentTech">{{ i.technologie_id }} <em>{{ i.level }}</em></p>
+                            <p class="cardContentTech">{{ i.tech_name }} <em>{{ i.level }}</em></p>
                         </div>
                     </div>
                     <a href="#" class="btn_group">

@@ -3,7 +3,10 @@ from flask import render_template, redirect, session, request, flash
 from flask_app import app
 
 from flask_app.models.user import User
-from flask_app.models.group import Group
+from flask_app.models.room import Room
+from flask_app.models.technology import Techonology
+
+
 
 from flask_bcrypt import Bcrypt
 bcrypt = Bcrypt(app)
@@ -11,12 +14,13 @@ bcrypt = Bcrypt(app)
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    rooms=Room.get_all()
+    return render_template("index.html",rooms=rooms)
 
+@app.route("/register-view")
+def register_view():
+    return render_template("register.html")
 
-# @app.route("/register-view")
-# def register_view():
-#     return render_template("register.html")
 
 @app.route("/register", methods=["POST"])
 def register():
@@ -35,10 +39,10 @@ def register():
 
     session["user_id"]=id
 
-    return redirect("/")
+    return redirect("/dashboard")
 
 @app.route("/login-view")
-def register_view():
+def login_view():
     return render_template("login.html")
 
 @app.route("/login", methods=["POST"])
@@ -53,10 +57,11 @@ def login():
         return redirect("/")
 
     session["user_id"] = user.id
-    return redirect("/muro")
 
-@app.route("/muro")
-def muro():
+    return redirect("/dashboard")
+
+@app.route("/dashboard")
+def dashboard():
     if "user_id" not in session:
         return redirect("/")
     
@@ -68,13 +73,10 @@ def muro():
     # Usuario que INICIÓ SESIÓN  
     user=User.get_by_id(data)
 
-    messages=Message.get_user_messages(data)
+    # Agregamos las rooms
+    rooms=Room.get_all()
 
-    # MENSAJES
-    users=User.get_all()
-
-    return render_template("muro.html",user=user,users=users,messages=messages)
-
+    return render_template("dashboard.html",user=user, rooms=rooms)
 
 
 @app.route("/logout")

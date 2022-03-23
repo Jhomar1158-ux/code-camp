@@ -27,6 +27,35 @@ header{
     width: 1000px;
 }
 
+.profile a{
+    text-decoration: none;
+}
+.profile{
+    height: 20px;
+    width: 190px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.icon-logout-1{
+    color: #E3025E;
+}
+
+.profile_a{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+}
+.profile_a p{
+    color: white;
+    margin-left: 5px;
+}
+
+.icon-profile-1{
+    color:white
+}
+
 .logo{
     display: flex;
 }
@@ -279,6 +308,37 @@ main{
     left: 450px
 }
 
+.card_register{
+    height: 400px;
+}
+
+.topic_details{
+    font-size: 15px;
+    width:310px;
+}
+
+.topic_details a{
+    color: #1f1850;
+}
+
+.card_room{
+    height: 300px;
+    width: 400px;
+    left: 400px;
+    justify-content: space-between;
+}
+
+.option_input{
+    width: 150px;
+    height: 35px;
+}
+
+.options_room{
+    width: 310px;
+    display: flex;
+    justify-content: space-between;
+}
+
 .card_login_title{
     font-size: 28px;
     color: white;
@@ -291,8 +351,8 @@ main{
 
 .form-control{
     border-radius: 5px;
-    width: 270px;
-    height: 26px;
+    width: 300px;
+    height: 30px;
     padding: 3px;
 }
 
@@ -300,8 +360,8 @@ main{
     margin-top: 5px;
     border-radius: 5px;
     background-color: #2C245D;
-    width: 275px;
-    height: 30px;
+    width: 310px;
+    height: 35px;
     color: white;
     border: 1px solid #2C245D;
     cursor: pointer;
