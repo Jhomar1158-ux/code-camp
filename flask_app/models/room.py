@@ -20,8 +20,9 @@ class Room:
 
     @classmethod
     def get_all(cls):
-        query = "SELECT * FROM rooms LEFT JOIN technologies ON rooms.technologie_id=technologies.id"
+        query = "SELECT * FROM rooms LEFT JOIN technologies ON rooms.technologie_id=technologies.id ORDER BY rooms.created_at DESC"
         results = connectToMySQL('esquema_code_camp').query_db(query)
+        print(results)
         rooms = []
         for i in results:
             rooms.append(cls(i))
