@@ -10,7 +10,9 @@ class Room:
         self.updated_at = data["updated_at"]
         self.technologie_id=data["technologie_id"]
 
-        self.tech_name=data["tech_name"]
+        # OBTUVE UN ERROR DE KEY Y LO COMENTÉ PARA SOLUCIONARLO
+        # Atributo creado con el fin de ver los nombres de una tech
+        # self.tech_name=data["tech_name"]
 
     @classmethod
     def save(cls, data):
@@ -22,7 +24,6 @@ class Room:
     def get_all(cls):
         query = "SELECT * FROM rooms LEFT JOIN technologies ON rooms.technologie_id=technologies.id ORDER BY rooms.created_at DESC"
         results = connectToMySQL('esquema_code_camp').query_db(query)
-        print(results)
         rooms = []
         for i in results:
             rooms.append(cls(i))
@@ -37,3 +38,14 @@ class Room:
             es_valido = False
         
         return es_valido
+
+    @classmethod
+    def get_by_id(cls, data):
+        query = "SELECT * FROM rooms WHERE id = %(id)s"
+        result = connectToMySQL('esquema_code_camp').query_db(query, data)
+        print("*"*10)
+        print(result)
+        print("*"*10)
+        room = cls(result[0])
+        return room
+

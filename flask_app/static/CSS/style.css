@@ -368,6 +368,108 @@ main{
     font-size: 18px;
 }
 
+.wrp_main{
+    display: flex;
+    justify-content: space-between;
+}
+
+.wrp_left{
+    width: 650px;
+    height: 450px;
+    border: 1px solid #E3025E;
+    background-color: #2C245D;
+}
+
+.wrp_left_title{
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #E3025E;
+    background-color: #E3025E;
+}
+
+.wrp_left_title p{
+    margin-left: 8px;
+    color: white;
+    font-size: 24px;
+}
+.icon_arrow_left{
+    color: white;
+}
+
+.wrp_chat{
+    height: 450px;
+}
+
+.input_message{
+    margin-top: 365px;
+    width: 650px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.input_text_chat{
+    width: 620px;
+    height: 30px;
+    border-top: 1px solid #E3025E;
+    outline: none;
+}
+
+.icon_message_btn{
+    cursor: pointer;
+    outline: none;
+    height: 34px;
+    width: 25px;
+    background-color: #E3025E;
+}
+
+.icon_message_btn i{
+    color: white;
+}
+
+
+.wrp_right{
+    width: 300px;
+    height: 450px;
+    border: 1px solid #E3025E;
+    background-color: #2C245D;
+}
+
+.wrp_right_title{
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #E3025E;
+    background-color: #E3025E;
+    color: white;
+    height: 30px;
+    font-size: 22px;
+}
+
+.participans_joined{
+    margin-left: 5px;
+    color:#2C245D;
+    font-size: 18px;
+}
+
+.wrp_online_people{
+    padding: 10px 20px;
+}
+
+.wrp_person{
+    display: flex;
+    align-items: center;
+    color: white;
+    margin-bottom: 3px;
+}
+
+.wrp_person p{
+    margin-left: 6px;
+}
+
+
+
+
 
 /* =======particles======= */
 

@@ -1,3 +1,4 @@
+
 from flask import render_template, redirect, session, request, flash
 from flask_app import app
 
@@ -34,3 +35,25 @@ def add_new_room_confirm():
     
 
     return redirect("/dashboard")
+
+
+@app.route("/view-room-<int:id>")
+def view_room_id(id):
+    if "user_id" not in session:
+        return redirect("/")
+    
+    data={
+        "id":session["user_id"]
+    }
+    user=User.get_by_id(data)
+
+    data_room = {
+        "id": id
+    }
+
+    room_details = Room.get_by_id(data_room)
+    
+    return render_template("room.html", user=user, room_details=room_details)
+
+
+
