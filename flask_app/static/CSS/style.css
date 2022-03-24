@@ -383,10 +383,16 @@ main{
 .wrp_left_title{
     padding: 10px 20px;
     display: flex;
+    justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid #E3025E;
     background-color: #E3025E;
 }
+.wrp_left_1{
+    display: flex;
+    align-items: center;
+}
+
 
 .wrp_left_title p{
     margin-left: 8px;
@@ -467,8 +473,13 @@ main{
     margin-left: 6px;
 }
 
+#room_tech_tag{
+    font-size: 18px;
+}
 
-
+#room_tech_created_at{
+    font-size: 22px;
+}
 
 
 /* =======particles======= */

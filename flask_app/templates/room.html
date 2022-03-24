@@ -41,10 +41,18 @@
         <div class="wrp_main">
             <div class="wrp_left">
                 <div class="wrp_left_title">
-                    <a href="/dashboard">
-                        <i class="fa fa-arrow-left icon_arrow_left" aria-hidden="true"></i>
-                    </a>
-                    <p>{{ room_details.name }}</p>
+                    <div class="wrp_left_1">
+                        <a href="/dashboard">
+                            <i class="fa fa-arrow-left icon_arrow_left" aria-hidden="true"></i>
+                        </a>
+                        <p>{{ room_details.name }}</p>
+                        <p id="room_tech_tag">({{  room_details.tech_name  }})</p>
+                    </div>
+                    <div class="wrp_left_2">
+                        <p id="room_tech_created_at">
+                            {{ room_details.created_at  }}
+                        </p>
+                    </div>
                 </div>
                 <div class="wrp_chat">
                     <div class="conversation">

@@ -12,7 +12,7 @@ class Room:
 
         # OBTUVE UN ERROR DE KEY Y LO COMENTÉ PARA SOLUCIONARLO
         # Atributo creado con el fin de ver los nombres de una tech
-        # self.tech_name=data["tech_name"]
+        self.tech_name=data["tech_name"]
 
     @classmethod
     def save(cls, data):
@@ -29,6 +29,32 @@ class Room:
             rooms.append(cls(i))
         return rooms
 
+    @classmethod
+    def get_all_rooms_by_text(cls,data):
+
+        # main_search_tech=data["main_search_tech"]+"%"
+
+        # query = """SELECT * FROM rooms LEFT JOIN technologies ON rooms.technologie_id=technologies.id  WHERE technologies.tech_name LIKE %s ORDER BY rooms.created_at DESC """
+        # connectToMySQL('esquema_code_camp').execute(query,[main_search_tech])
+        # results= connectToMySQL('esquema_code_camp').fetchall()
+        # data2={
+        #     "main_search_tech":data["main_search_tech"]+"%"
+        # }
+
+        query = """SELECT * FROM rooms LEFT JOIN technologies ON rooms.technologie_id=technologies.id  
+                WHERE technologies.tech_name LIKE '"""+data["main_search_tech"]+"%"+"""' 
+                ORDER BY rooms.created_at DESC """
+
+        results= connectToMySQL('esquema_code_camp').query_db(query)
+
+        rooms = []
+        for i in results:
+            rooms.append(cls(i))
+        print("/"*10)
+        print(rooms)
+        print("/"*10)
+        return rooms
+
     @staticmethod
     def valida_room(formulario):
         es_valido = True
@@ -41,7 +67,7 @@ class Room:
 
     @classmethod
     def get_by_id(cls, data):
-        query = "SELECT * FROM rooms WHERE id = %(id)s"
+        query = "SELECT * FROM rooms LEFT JOIN technologies ON rooms.technologie_id=technologies.id WHERE rooms.id = %(id)s"
         result = connectToMySQL('esquema_code_camp').query_db(query, data)
         print("*"*10)
         print(result)

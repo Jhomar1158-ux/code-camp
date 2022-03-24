@@ -76,6 +76,7 @@ def dashboard():
     # Agregamos las rooms
     rooms=Room.get_all()
 
+
     return render_template("dashboard.html",user=user, rooms=rooms)
 
 

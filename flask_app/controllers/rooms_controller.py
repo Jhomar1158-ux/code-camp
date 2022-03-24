@@ -55,5 +55,21 @@ def view_room_id(id):
     
     return render_template("room.html", user=user, room_details=room_details)
 
+@app.route("/search-tech-room", methods=["GET"])
+def search_tech_room():
+    print(request.form)
+    if "user_id" not in session:
+        return redirect("/")
+    data={
+        "id":session["user_id"]
+    }
+    formulario={
+        "main_search_tech": request.args.get("main_search_tech")
+    }
+    user=User.get_by_id(data)
 
+    rooms=Room.get_all_rooms_by_text(formulario)
+    print(rooms)
+
+    return render_template("dashboard_search.html",rooms=rooms, user=user)
 
