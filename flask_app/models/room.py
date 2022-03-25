@@ -9,6 +9,7 @@ class Room:
         self.created_at = data["created_at"]
         self.updated_at = data["updated_at"]
         self.technologie_id=data["technologie_id"]
+        self.owner_id=data["owner_id"]
 
         # OBTUVE UN ERROR DE KEY Y LO COMENTÉ PARA SOLUCIONARLO
         # Atributo creado con el fin de ver los nombres de una tech
@@ -16,7 +17,7 @@ class Room:
 
     @classmethod
     def save(cls, data):
-        query = "INSERT INTO rooms (name, level, technologie_id) VALUES (%(name)s, %(level)s, %(technologie_id)s);"
+        query = "INSERT INTO rooms (name, level, technologie_id, owner_id) VALUES (%(name)s, %(level)s, %(technologie_id)s , %(owner_id)s);"
         nuevoId = connectToMySQL('esquema_code_camp').query_db(query, data)
         return nuevoId
 
@@ -75,3 +76,13 @@ class Room:
         room = cls(result[0])
         return room
 
+    @classmethod
+    def delete(cls, data):
+        query = "DELETE FROM rooms WHERE id = %(id)s"
+        return connectToMySQL('esquema_code_camp').query_db(query, data)
+
+    @classmethod
+    def update(cls, data):
+        query = "UPDATE rooms SET name = %(name)s, level = %(level)s, technologie_id = %(technologie_id)s, owner_id = %(owner_id)s WHERE (id = %(id)s);"
+        result = connectToMySQL('esquema_code_camp').query_db(query, data)
+        return result

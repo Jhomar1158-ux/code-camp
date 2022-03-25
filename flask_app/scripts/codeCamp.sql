@@ -20,6 +20,8 @@ USE `esquema_code_camp` ;
 -- -----------------------------------------------------
 -- Table `esquema_code_camp`.`users`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `esquema_code_camp`.`users` ;
+
 CREATE TABLE IF NOT EXISTS `esquema_code_camp`.`users` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `first_name` VARCHAR(150) NULL,
@@ -36,6 +38,8 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `esquema_code_camp`.`technologies`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `esquema_code_camp`.`technologies` ;
+
 CREATE TABLE IF NOT EXISTS `esquema_code_camp`.`technologies` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `tech_name` VARCHAR(150) NULL,
@@ -48,6 +52,8 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `esquema_code_camp`.`rooms`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `esquema_code_camp`.`rooms` ;
+
 CREATE TABLE IF NOT EXISTS `esquema_code_camp`.`rooms` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` TEXT NULL,
@@ -55,11 +61,18 @@ CREATE TABLE IF NOT EXISTS `esquema_code_camp`.`rooms` (
   `created_at` DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` DATETIME NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `technologie_id` INT NOT NULL,
+  `owner_id` INT NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_rooms_technologies1_idx` (`technologie_id` ASC) VISIBLE,
+  INDEX `fk_rooms_users1_idx` (`owner_id` ASC) VISIBLE,
   CONSTRAINT `fk_rooms_technologies1`
     FOREIGN KEY (`technologie_id`)
     REFERENCES `esquema_code_camp`.`technologies` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_rooms_users1`
+    FOREIGN KEY (`owner_id`)
+    REFERENCES `esquema_code_camp`.`users` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -68,6 +81,8 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `esquema_code_camp`.`users_has_rooms`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `esquema_code_camp`.`users_has_rooms` ;
+
 CREATE TABLE IF NOT EXISTS `esquema_code_camp`.`users_has_rooms` (
   `user_id` INT NOT NULL,
   `room_id` INT NOT NULL,
@@ -90,6 +105,8 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `esquema_code_camp`.`messages`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `esquema_code_camp`.`messages` ;
+
 CREATE TABLE IF NOT EXISTS `esquema_code_camp`.`messages` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `message` TEXT NULL,

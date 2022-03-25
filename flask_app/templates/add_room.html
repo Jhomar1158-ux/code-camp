@@ -21,7 +21,7 @@
             <div class="first_header">
                 <div class="logo">
                     <a href="/dashboard">
-                        <img src="../static/IMG/logo.svg" alt="Logo Edullka">
+                        <img src="{{ url_for('static', filename='IMG/logo.svg')}}" alt="Logo Edullka">
                         <p>CodeCamp</p>
                     </a>
                 </div>
@@ -63,9 +63,9 @@
             </div>
         </div>
         <form action="/add-new-room-confirm" method="POST" class="card_login card_room">
-            <p class="card_login_title">Add a New Group</p>
+            <p class="card_login_title">Add a New Room</p>
             <p class="topic_details">Note: You will get banned if you abuse the Topic <a href="#">(click for more detail)</a></p>
-        
+            <input type="hidden" name="owner_id" value="{{ user.id }}">
             <div class="form-group">
                 <p>
                     <label for="name">Topic: </label>

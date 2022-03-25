@@ -73,3 +73,49 @@ def search_tech_room():
 
     return render_template("dashboard_search.html",rooms=rooms, user=user)
 
+@app.route("/delete/room/<int:id>")
+def delete_room(id):
+    if 'user_id' not in session:
+        return redirect('/')
+    
+    data = {
+        "id":id
+    }
+
+    Room.delete(data)
+    return redirect("/dashboard")
+
+
+@app.route("/edit/room/<int:id>")
+def edit_room(id):
+    if 'user_id' not in session:
+        return redirect('/')
+
+    data = {
+        "id": session['user_id']
+    }
+
+    user = User.get_by_id(data)
+
+    data_room = {
+        "id": id
+    }
+    room_select = Room.get_by_id(data_room)
+    technologies=Techonology.get_all()
+
+    return render_template('edit_room.html',technologies=technologies, user=user, room_select=room_select)
+
+
+@app.route("/update/room", methods=["POST"])
+def update_room():
+    if 'user_id' not in session:
+        return redirect('/')
+
+    if not Room.valida_room(request.form):
+        return redirect("/edit/room/"+request.form['id'])
+    
+    Room.update(request.form)
+    print("%"*10)
+    print(request.form)
+
+    return redirect("/dashboard")

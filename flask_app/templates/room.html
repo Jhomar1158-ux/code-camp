@@ -19,7 +19,7 @@
             <div class="first_header">
                 <div class="logo">
                     <a href="/dashboard">
-                        <img src="../static/IMG/logo.svg" alt="Logo Edullka">
+                        <img src="{{ url_for('static', filename='IMG/logo.svg')}}" alt="Logo Edullka">
                         <p>CodeCamp</p>
                     </a>
                 </div>
@@ -46,11 +46,10 @@
                             <i class="fa fa-arrow-left icon_arrow_left" aria-hidden="true"></i>
                         </a>
                         <p>{{ room_details.name }}</p>
-                        <p id="room_tech_tag">({{  room_details.tech_name  }})</p>
                     </div>
                     <div class="wrp_left_2">
                         <p id="room_tech_created_at">
-                            {{ room_details.created_at  }}
+                            ({{ room_details.created_at  }})
                         </p>
                     </div>
                 </div>

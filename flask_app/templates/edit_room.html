@@ -56,33 +56,51 @@
         
     </header>
     <main>
-        <div class="cards">
-            {% for i in  rooms%}
-                <div class="cardGroup">
-                    <div class="cardContent">
-                        <div class="cardContent_first">
-                            <div class="fogata">
-                                <img src="../static/IMG/Fogata.svg" alt="icono_fogata">
-                            </div>
-                            <div class="cardContent_1">
-                                <p class="cardContent_title">{{ i.name }}</p>
-                                <p class="cardContentTech">{{ i.tech_name }} <em>{{ i.level }}</em></p>
-                            </div>
-                        </div>
-                        <div class="optionsRoom">
-                            {% if i.owner_id == user.id %}
-                                <a href="/edit/room/{{ i.id }}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                                <a href="/delete/room/{{ i.id }}"><i class="fa fa-trash" aria-hidden="true"></i></a>
-                            {% endif %}
-                        </div>
-                    </div>
-                    <a href="/view-room-{{i.id}}" class="btn_group">
-                        <i class="fa fa-commenting" aria-hidden="true"></i>
-                        <p>Join and Found Good Material Now!</p>
-                    </a>
-                </div>
-            {% endfor %}
+        <div class="view" id="particles-js">
+            <div class="plane main">
+                
+            </div>
         </div>
+        <form action="/update/room" method="POST" class="card_login card_room">
+            <p class="card_login_title">Edit Room</p>
+            <p class="topic_details">Note: You will get banned if you abuse the Topic <a href="#">(click for more detail)</a></p>
+            <input type="hidden" name="owner_id" value="{{ user.id }}">
+            <input type="hidden" name="id" value="{{room_select.id}}">
+            <div class="form-group">
+                <p>
+                    <label for="name">Topic: </label>
+                </p>
+                <input type="text" name="name" id="name" class="form-control">
+            </div>
+            <div class="options_room">
+                <div class="form-group">
+                    <p>
+                        <label for="technologie_id">Technology: </label>
+                    </p>
+                    <select name="technologie_id" id="technologie_id" class="option_input">
+                        {% for i in technologies %}
+                            <option value="{{ i.id }}">{{ i.tech_name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <p>
+                        <label for="level">Level: </label>
+                    </p>
+                    <select name="level" id="level" class="option_input">
+                            <option value="Any Level">Any Level</option>
+                            <option value="Basic">Basic</option>
+                            <option value="Intermediate">Intermediate</option>
+                            <option value="Advanced">Advanced</option>
+                    </select>
+                </div>
+            </div>
+            <input type="submit" class="btn-primary" value="Create Room">
+        </form>
     </main>
+
+    <script src="{{ url_for('static', filename='JS/particles.js') }}"></script>
+    <script src="{{ url_for('static', filename='JS/app.js') }}"></script>
+    <script src="{{ url_for('static', filename='JS/stats.js') }}"></script>
 </body>
 </html>

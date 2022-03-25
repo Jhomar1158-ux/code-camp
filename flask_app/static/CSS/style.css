@@ -265,10 +265,28 @@ main{
 .cardContent{
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    height: 50px;
+}
+
+.cardContent_first{
+    display: flex;
+    align-items: center;
 }
 
 .cardContent_1{
     margin-left: 8px;
+}
+
+.optionsRoom{
+    height: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.optionsRoom a i{
+    color: #E3025E;
 }
 
 .btn_group{
@@ -478,7 +496,7 @@ main{
 }
 
 #room_tech_created_at{
-    font-size: 22px;
+    font-size: 14px;
 }
 
 
