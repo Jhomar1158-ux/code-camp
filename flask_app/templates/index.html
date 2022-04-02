@@ -57,17 +57,19 @@
             {% for i in  rooms%}
                 <div class="cardGroup">
                     <div class="cardContent">
-                        <div class="fogata">
-                            <img src="../static/IMG/Fogata.svg" alt="icono_fogata">
-                        </div>
-                        <div class="cardContent_1">
-                            <p class="cardContent_title">{{ i.name }}</p>
-                            <p class="cardContentTech">{{ i.tech_name  }} <em>{{ i.level }}</em></p>
+                        <div class="cardContent_first">
+                            <div class="fogata">
+                                <img src="../static/IMG/Fogata.svg" alt="icono_fogata">
+                            </div>
+                            <div class="cardContent_1">
+                                <p class="cardContent_title">{{ i.name }}</p>
+                                <p class="cardContentTech">{{ i.tech_name }} <em>{{ i.level }}</em></p>
+                            </div>
                         </div>
                     </div>
                     <a href="/login-view" class="btn_group">
                         <i class="fa fa-commenting" aria-hidden="true"></i>
-                        <p>Join and Found Good Material Now!</p>
+                        <p>Join and Learn Code Now!</p>
                     </a>
                 </div>
             {% endfor %}

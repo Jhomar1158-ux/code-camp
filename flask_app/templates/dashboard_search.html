@@ -60,17 +60,19 @@
             {% for i in  rooms%}
                 <div class="cardGroup">
                     <div class="cardContent">
-                        <div class="fogata">
-                            <img src="../static/IMG/Fogata.svg" alt="icono_fogata">
-                        </div>
-                        <div class="cardContent_1">
-                            <p class="cardContent_title">{{ i.name }}</p>
-                            <p class="cardContentTech">{{ i.tech_name }} <em>{{ i.level }}</em></p>
+                        <div class="cardContent_first">
+                            <div class="fogata">
+                                <img src="../static/IMG/Fogata.svg" alt="icono_fogata">
+                            </div>
+                            <div class="cardContent_1">
+                                <p class="cardContent_title">{{ i.name }}</p>
+                                <p class="cardContentTech">{{ i.tech_name }} <em>{{ i.level }}</em></p>
+                            </div>
                         </div>
                         <div class="optionsRoom">
-                            {% if i.user_id == user.id %}
-                                <a href="/edit/room/ID">Editar</a>
-                                <a href="/delete/room/ID">Borrar</a>
+                            {% if i.owner_id == user.id %}
+                                <a href="/edit/room/{{ i.id }}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                                <a href="/delete/room/{{ i.id }}"><i class="fa fa-trash" aria-hidden="true"></i></a>
                             {% endif %}
                         </div>
                     </div>
